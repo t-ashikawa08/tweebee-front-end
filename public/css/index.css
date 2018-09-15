@@ -1,0 +1,31 @@
+.first-view-container,.filter{
+    position: absolute;
+    top: 0;
+    z-index: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+.first-view-container{
+    background-image:url("../img/top.jpg");
+}
+
+.filter {
+    background: rgba(0,0,0,0.5);
+}
+
+.container {
+    margin-top:105px;
+    z-index: 1;
+    position: relative;
+    display:flex;
+    justify-content: space-around;
+}
+
+.welcome-message{
+    color:white;
+}
+
+.cooperation{
+    padding-top: 2em;
+}

@@ -3,6 +3,7 @@ const expressLayouts = require('express-ejs-layouts');
 
 const path = require('path');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const session = require('express-session');
 
 //routing files
@@ -23,6 +24,15 @@ app.use(session({
     maxAge: 30 * 60 * 1000
   }
 }));
+
+//cookieParser
+app.use(cookieParser())
+
+//bodyParser
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+app.use(bodyParser.json());
 
 //routing files routing
 app.use('/', index);

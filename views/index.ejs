@@ -13,12 +13,14 @@
                 <div class="card-body">
                     <h4 class="card-title">TweeBeeにログインする</h4>
                     <p class="card-text">TwitterアカウントIDを入力してください。</p>
-                    <div class="input-group">
-                        <input type="text" class="form-control" id="login-id"/>
-                        <div class="input-group-append">
-                            <button class="btn btn-primary" type="button">決定</button>
+                    <form action="/login" method="post">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="login-id" name="login-id"/>
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button" onclick="$(form).submit();">決定</button>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                     <div class="cooperation">
                         <p>TweeBeeと連携する</p>
                     </div>

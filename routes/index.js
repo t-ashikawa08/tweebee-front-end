@@ -1,10 +1,10 @@
-var router = require('express').Router();
-var Tokens = require("csrf");
-var tokens = new Tokens();
+const router = require('express').Router();
+const Tokens = require("csrf");
+const tokens = new Tokens();
 
 router.get('/', function(req, res, next) {
-    var secret = tokens.secretSync();
-    var token = tokens.create(secret);
+    let secret = tokens.secretSync();
+    let token = tokens.create(secret);
     
     req.session._csrf = secret;
     res.cookie("_csrf", token);
@@ -15,8 +15,8 @@ router.get('/', function(req, res, next) {
 });
 
 router.post("/login", function (req, res) {
-    var secret = req.session._csrf;
-    var token = req.cookies._csrf;
+    let secret = req.session._csrf;
+    let token = req.cookies._csrf;
 
     if (tokens.verify(secret, token) === false) {
         throw new Error("Invalid Token");
@@ -25,7 +25,27 @@ router.post("/login", function (req, res) {
     delete req.session._csrf;
     res.clearCookie("_csrf");
 
-    res.redirect("");
-  });
+    console.log(req.body)
+
+    res.redirect("/");
+});
+
+router.get('/cooperation', function(req, res){
+    let Twitter = require('twitter');
+ 
+    let client = new Twitter({
+        consumer_key: '',
+        consumer_secret: '',
+        access_token_key: '',
+        access_token_secret: ''
+    });
+    
+    let params = {screen_name: 'nodejs'};
+    client.get('statuses/user_timeline', params, function(error, tweets, response) {
+    if (!error) {
+        console.log(tweets);
+    }
+    });
+});
 
 module.exports = router;

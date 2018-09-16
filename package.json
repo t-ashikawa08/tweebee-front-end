@@ -19,12 +19,15 @@
   "homepage": "https://github.com/t-ashikawa08/tweebee-front-end#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "config": "^2.0.1",
     "cookie-parser": "^1.4.3",
     "csrf": "^3.0.6",
     "ejs": "^2.6.1",
     "express": "^4.16.3",
     "express-ejs-layouts": "^2.5.0",
     "express-session": "^1.15.6",
+    "passport": "^0.4.0",
+    "passport-twitter": "^1.0.4",
     "twitter": "^1.7.1"
   }
 }

@@ -1,0 +1,86 @@
+<link href="/css/users/profile.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.bundle.min.js"></script>
+<div class="profile-wrapper">
+    <div class="user-profile-container">
+        <div class="user-profile-img">
+            <div class="img-wrapper">
+                <img class="card-img-top" src="<%- user.profile_image_url_https %>" alt="Profile Image">
+            </div>
+        </div>
+        <div class="user-profile-text">
+            <div class="names">
+                <h4 class="name"><i class="fa fa-user"></i><%- user.name %></h4>
+                <p class="id">@<%- user.screen_name %></p>    
+            </div>
+            <div class="others">
+                <div class="others-inner">
+                    <p class="description"><i class="fa fa-edit"></i><%- user.description %></p>
+                    <p><a class="url" href="<%- user.url %>"><i class="fa fa-link"></i><%- user.url %></a></p>
+                    <p class="location"><i class="fa fa-location-arrow"></i><%- user.location %></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hobby-container">
+        hobby
+    </div>
+    <div class="network-container">
+        <div class="search-container">
+            <p><i class="fa fa-search"></i>TweeBeeユーザを趣味で検索する</p>
+            <div class="input-group">
+                <input type="text" class="form-control">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="button">検索</button>
+                </div>
+            </div>
+            <div class="input-group" style="margin-top:1em;">
+                <button class="btn btn-primary" type="button">カテゴリを選んで検索</button>
+            </div>
+        </div>
+        <div class="chart-container">
+            <div class="canvas-wrapper">
+                <canvas id="chart-canvas"></canvas>
+                <script>
+                    var canvas = $("#chart-canvas");
+                    canvas.attr("width", canvas.width());
+                    canvas.attr("height", canvas.height());
+
+                    var myBarChart = new Chart($("#chart-canvas"), {
+                        type: 'bar',
+                        data: {
+                            labels: ["赤", "青", "黄", "緑", "紫"],
+                            datasets: [{
+                                label: '趣味ランキング',
+                                data: [12, 19, 3, 5, 2],
+                                backgroundColor: [
+                                    'rgba(255, 99, 132, 0.2)',
+                                    'rgba(54, 162, 235, 0.2)',
+                                    'rgba(255, 206, 86, 0.2)',
+                                    'rgba(75, 192, 192, 0.2)',
+                                    'rgba(153, 102, 255, 0.2)',
+                                ],
+                                borderColor: [
+                                    'rgba(255,99,132,1)',
+                                    'rgba(54, 162, 235, 1)',
+                                    'rgba(255, 206, 86, 1)',
+                                    'rgba(75, 192, 192, 1)',
+                                    'rgba(153, 102, 255, 1)',
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero:true
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+</div>

@@ -14,6 +14,7 @@ const commonLib = require('./libraries/CommonLib');
 
 //routing files
 const index = require('./routes/index');
+const users = require('./routes/users');
 
 //app create
 const app = express();
@@ -27,7 +28,7 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   cookie: {
-    maxAge: 30 * 60 * 1000
+    maxAge: 1000 * 60 * 60 * 24 //one day
   }
 }));
 
@@ -40,8 +41,18 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
+//session check
+const sessionCheck = (req, res, next) => {
+  if (req.session && req.session.user) {
+      next();
+  } else {
+      res.redirect('/');
+  }
+};
+
 //routing files routing
 app.use('/', index);
+app.use('/users', sessionCheck, users);
 
 //view files routing
 app.set('views', path.join(__dirname, 'views'));
@@ -65,24 +76,29 @@ passport.use(new TwitterStrategy({
   callbackURL: config.CallBackUrl
 }, (accessToken, refreshToken, profile, callback) => {
   process.nextTick(() => {
-    let user = {
-      "user_id" : profile.id,
-      "oauth_token" : accessToken,
-      "oauth_token_secret" : refreshToken,
-    }
-
-    commonLib.ajax(config.API + "/user/register", user, function(error, response, body){
-      return callback(null, profile);
-    });
+    return callback(null, profile);
   });
 }));
 
 app.use(passport.initialize());
 app.use(passport.session());
 
+//twitter cooperation routing
 app.get('/cooperation', passport.authenticate('twitter'));
 app.get('/cooperation/callback', passport.authenticate('twitter', {failureRedirect: '/login' }), (req, res) => {
-  res.redirect('/'); 
+  let user = req.session.passport.user._json;
+  req.session.user = {
+    name: user.name,
+    screen_name: user.screen_name,
+    description: user.description,
+    location: user.location,
+    url: user.url,
+    profile_image_url_https: user.profile_image_url_https.replace("normal.jpg", "400x400.jpg"),
+    oauth_token: req.query.oauth_token,
+    oauth_token_secret: req.query.oauth_token_secret
+  }
+  delete req.session.passport;
+  res.redirect('/users/profile'); 
 });
 
 //http header information

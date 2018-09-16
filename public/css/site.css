@@ -17,3 +17,7 @@ a {
 .container {
     max-width:1024px;
 }
+
+.fa {
+    padding-right: .1em;
+}

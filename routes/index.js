@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
     
     req.session._csrf = secret;
     res.cookie("_csrf", token);
-    
+
     res.render('index', { 
         title: 'Hello World!' 
     });

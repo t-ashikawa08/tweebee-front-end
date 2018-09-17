@@ -10,11 +10,10 @@ const config = require('config');
 const passport = require('passport');
 const TwitterStrategy = require('passport-twitter');
 
-const commonLib = require('./libraries/CommonLib');
-
 //routing files
 const index = require('./routes/index');
 const users = require('./routes/users');
+const api = require('./routes/api');
 
 //app create
 const app = express();
@@ -53,6 +52,7 @@ const sessionCheck = (req, res, next) => {
 //routing files routing
 app.use('/', index);
 app.use('/users', sessionCheck, users);
+app.use('/api', api);
 
 //view files routing
 app.set('views', path.join(__dirname, 'views'));
@@ -88,6 +88,7 @@ app.get('/cooperation', passport.authenticate('twitter'));
 app.get('/cooperation/callback', passport.authenticate('twitter', {failureRedirect: '/login' }), (req, res) => {
   let user = req.session.passport.user._json;
   req.session.user = {
+    id: user.id,
     name: user.name,
     screen_name: user.screen_name,
     description: user.description,
@@ -107,6 +108,8 @@ app.use(function (req, res, next) {
   res.removeHeader('ETag');
   res.header('Cache-Control', ['private', 'no-store', 'no-cache', 'must-revalidate', 'proxy-revalidate'].join(','));
   res.header('no-cache', 'Set-Cookie');
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 });
 
 app.listen(3000, function () {

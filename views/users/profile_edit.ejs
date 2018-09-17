@@ -1,0 +1,32 @@
+<script src="/js/profile_edit.js"></script>
+<link href="/css/users/profile_edit.css" rel="stylesheet">
+<div class="profile-edit-wrapper">
+    <div class="hobby-container">
+        <ul class="my-hobbies">
+            <% hobbies.forEach(function (hobby, key) { %>
+                <% var genre = hobby.hobbyInfo.genre; %>
+                <% var tag = genre.tag; %>    
+                <% var value = hobby.hobbyInfo.categoryName + (genre.genreName ? " > " + genre.genreName : "") + (tag.tagName ? " > " + tag.tagName : ""); %>
+                <li hobby-id="<%= hobby.hobbyId %>">
+                    <div class="hobby">
+                        <span><%= value %></span>
+                        <button class="btn bg-danger"><i class="fa fa-trash"></i></button>
+                    </div>
+                </li>    
+            <% }); %>
+        </ul>
+      
+        <button class="btn bg-success hobby-add" style="color:white">
+            <i class="fa fa-plus-circle"></i>趣味を追加する
+        </button>
+    </div>
+    <div class="ranking-container">
+        ranking
+    </div>
+</div>
+<script>
+    $(function(){
+        var profile_edit = new ProfileEdit($(".profile-edit-wrapper"));
+        profile_edit.AttachEvent();
+    });
+</script>

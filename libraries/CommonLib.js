@@ -9,10 +9,13 @@ const CommonLib = {
                 'Content-Type':'application/json'
             },
             json: true,
-            form: json
+            form: json,
+            resolveWithFullResponse: true,
         };
     
-        request(options, callback);
+        request(options, function(error, responce, body){
+            callback(error, responce, body);
+        });
     }    
 }
 

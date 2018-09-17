@@ -1,0 +1,85 @@
+.profile-edit-wrapper {
+    display: flex;
+    overflow: hidden;
+}
+
+.hobby-container {
+    width: calc(100% / 3 * 1);
+    background: white;
+    border-radius: 10px;
+}
+
+.ranking-container {
+    width: calc(100% / 3 * 2)
+}
+
+.hobby-container, .ranking-container{
+    padding: .5em;
+    height: calc(100vh - 60px);
+}
+
+.my-hobbies {
+    list-style:none;
+    padding-left: 0;
+}
+
+.my-hobbies li:nth-child(odd){
+    background:#ececec;
+}
+
+.my-hobbies li {
+    padding: .5em 0;
+    border-radius: 5px
+}
+
+.hobby{
+    display:flex;
+    padding: 0 .3em;
+}
+
+.hobby button {
+    margin-left: auto;
+}
+
+button .fa {
+    color:white;
+}
+
+.hobby-add{
+    position: fixed;
+    bottom: 10;
+}
+
+.hobby-add-container-wrapper{
+    width: 100%;
+    display: flex;
+    height: 100%;
+}
+
+.column{
+    overflow-y: auto;
+    width: calc(100% / 3);
+}
+
+.column .add-button-wrapper {
+    text-align: right;
+    margin-top: .1em;
+}
+
+.list li {
+    cursor:pointer; 
+}
+
+.list li span {
+    display: flex; 
+}
+
+.list li span .user-add {
+    margin-left: auto;
+    font-size: 1.4em;
+    color: #28a745; 
+}
+
+.list .active span .user-add .fa {
+    color: white!important; 
+}

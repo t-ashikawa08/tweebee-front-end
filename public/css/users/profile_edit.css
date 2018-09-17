@@ -7,20 +7,23 @@
     width: calc(100% / 3 * 1);
     background: white;
     border-radius: 10px;
+    padding: .5em 0em .5em .5em;
 }
 
 .ranking-container {
-    width: calc(100% / 3 * 2)
+    width: calc(100% / 3 * 2);
+    padding: .5em;
 }
 
 .hobby-container, .ranking-container{
-    padding: .5em;
     height: calc(100vh - 60px);
 }
 
 .my-hobbies {
     list-style:none;
     padding-left: 0;
+    height: calc(100% - 40px);
+    overflow: auto;
 }
 
 .my-hobbies li:nth-child(odd){

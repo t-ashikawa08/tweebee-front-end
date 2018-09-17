@@ -17,6 +17,18 @@ var ProfileEdit = function(container, user_id){
                 }
             });
         });
+        instance.container.find(".hobby-delete").on("click", function(){
+            var id = $(this).closest("li").attr("hobby-id");
+            var json = { hobby_id : id };
+            TweeBee.ajax({
+                url: "/api/user/hobby_delete",
+                method: "post",
+                data: json,
+                callback: function(res){
+                    alert("delete")    
+                },
+            });
+        });
     }
 
     this._createBaseAddDialog = function(){

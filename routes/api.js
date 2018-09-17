@@ -31,4 +31,25 @@ router.post('/user/hobby_register', function(req, res, next) {
     });
 });
 
+router.post('/user/hobby_delete', function(req, res, next) {
+    var json = req.body;
+    json.user_id = req.session.user.id;
+
+    console.log(json)
+
+    commonLib.ajax(config.API + "/user/hobby_delete", json, function(error, responce, body){
+
+        console.log(responce)
+
+        if (error){
+            console.log('error: ' + error.message);
+            res.status(500);
+            res.end('Internal Server Error');
+            return;
+        }
+        
+        res.send(JSON.stringify(body.result));
+    });
+});
+
 module.exports = router;

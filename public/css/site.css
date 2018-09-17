@@ -73,3 +73,15 @@ body .tb-modal-open .modal-header .modal-close {
     font-size: 20pt;
     cursor: pointer;
 }
+
+@media screen and (max-width: 768px) {
+    .hide-sp{
+        display:none;
+    }
+}
+
+@media screen and (min-width: 769px){
+    .hide-pc{
+        display:none;
+    }
+}

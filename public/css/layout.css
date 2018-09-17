@@ -1,6 +1,5 @@
 .navigation {
     height: 60px;
-    display: flex;
     box-shadow: -1px 1px 10px rgba(0,0,0,0.4);
     position: fixed;
     top: 0;
@@ -11,10 +10,13 @@
 
 .logo-wrapper{
     width: 53px;
-    margin: auto 0px auto 20px;
     text-align: center;
     overflow: hidden;
     position: relative;
+}
+
+.navbar {
+    padding-top:0px;
 }
 
 .nav-buttons {
@@ -28,4 +30,14 @@
 
 .body-container{
     margin-top:60px;
+}
+
+@media screen and (max-width: 768px) {
+    
+}
+
+@media screen and (min-width: 769px){
+    .logo-wrapper{
+        margin: auto 0px auto 20px;
+    }
 }

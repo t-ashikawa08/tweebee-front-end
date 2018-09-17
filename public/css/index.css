@@ -18,7 +18,6 @@
     margin-top:105px;
     z-index: 1;
     position: relative;
-    display:flex;
     justify-content: space-around;
 }
 
@@ -28,4 +27,18 @@
 
 .cooperation{
     padding-top: 2em;
+}
+
+@media screen and (max-width: 768px) {
+    .login-form{
+        max-width: 300px;
+        margin: auto;
+        margin-top: 1em;
+    }
+}
+
+@media screen and (min-width: 769px){
+    .container {
+        display:flex;
+    }    
 }

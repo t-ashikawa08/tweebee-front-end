@@ -86,3 +86,48 @@
     width:100%;
     height:100%;
 }
+
+@media screen and (max-width: 768px) {
+    .user-container{
+        width: 100%;
+        display: none;
+    }
+
+    .sp-footer {
+        display: flex;
+        justify-content: space-around;
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+        color: white;
+        background: #424040;
+        height: 40px;
+    }
+
+    .section-button{
+        font-size: 2em;
+        width: 50px;
+        text-align: center;
+        padding: .2em;
+    }
+
+    .section-button .fa{
+        padding: 0;
+    }
+
+    .profile-wrapper{
+        margin-bottom: 40px;
+    }
+
+    .user-container.active{
+        display: block;
+    }
+
+    .section-button.active{
+        color: #3aabd2;
+    }
+}
+
+@media screen and (min-width: 769px){
+    
+}

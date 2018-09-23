@@ -115,7 +115,10 @@ var MasterEdit = function(container){
             nextMasterClick($(this));
         });
 
-        instance.container.find(selector + " ul .user-add").on("click", function(){
+        instance.container.find(selector + " ul .user-add").on("click", function(e){
+            e.preventDefault();
+            e.stopPropagation();
+
             userAdd($(this));
         });
 
@@ -193,6 +196,8 @@ var MasterEdit = function(container){
         });
 
         instance.container.find(selector + " li[tb-id='" + json.id + "'] .user-add").on("click", function(){
+            e.preventDefault();
+            e.stopPropagation();
             userAdd($(this));
         });
     }

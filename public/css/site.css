@@ -40,35 +40,78 @@ body .tb-modal .modal-dialog {
     overflow: hidden;
 }
 
-body .tb-modal .modal-header, body .tb-modal .modal-content{
-    opacity: 0;
-    transition: opacity 1s;
+@keyframes modal-fade-in {
+    0% {
+        opacity: 0;
+        transform: translateY(-10%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0%);
+    }
 }
 
-body .tb-modal-open .modal-header, body .tb-modal-open .modal-content {
-    opacity: 1;
+@keyframes modal-fade-out {
+    0% {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-10%);
+    }
 }
 
-body .tb-modal .modal-header{
+@keyframes modal-back-fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes modal-back-fade-out {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+body .tb-modal .modal-dialog {
+    animation: modal-fade-in 200ms ease-out;
+}
+
+body .tb-modal-close .modal-dialog {
+    animation: modal-fade-out 200ms ease-out;
+}
+
+body .tb-modal .modal-header {
     height: calc(100% / 10 * 1);
 }
 
-body .tb-modal .modal-body{
+body .tb-modal .modal-body {
     height: calc(100% / 10 * 9);
     border:none;
     padding:0;
     overflow:hidden;
 }
 
-body .tb-modal-open{
+body .tb-modal {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-body .tb-modal-open .modal-header .modal-close .fa {
-    
+body .tb-modal {
+    animation: modal-back-fade-in 200ms ease-out;
 }
 
-body .tb-modal-open .modal-header .modal-close {
+body .tb-modal-close {
+    animation: modal-back-fade-out 200ms ease-out;
+}
+
+body .tb-modal .modal-header .modal-close {
     margin-left: auto; 
     font-size: 20pt;
     cursor: pointer;

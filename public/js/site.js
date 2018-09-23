@@ -25,7 +25,7 @@ var TweeBee = {
             return;
         }
         var baseTag = ""
-            + "<div id='" + id + "' class='modal fade show tb-modal' role='dialog' data-backdrop='static'>"
+            + "<div id='" + id + "' class='modal tb-modal' role='dialog' data-backdrop='static'>"
             + " <div class='modal-dialog modal-lg'>"
             + "     <div class='modal-content'>"
             + "         <div class='modal-header'><div class='modal-close'><i class='fa fa-times-circle'></i></div></div>"
@@ -38,12 +38,12 @@ var TweeBee = {
 
         var modal = container.find("#" + id);
 
-        setTimeout(function(){
-            modal.addClass("tb-modal-open");    
-        },100);
-
         modal.find(".modal-close").on("click", function(){
-            modal.remove();
+            modal.addClass("tb-modal-close");
+
+            setTimeout(function(){
+                modal.remove();    
+            }, 200);
         });
     
         return modal.find(".modal-body");

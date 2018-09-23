@@ -15,6 +15,10 @@
     position: relative;
 }
 
+#navbarNav{
+    padding-left: 20px;
+}
+
 .navbar {
     padding-top:0px;
 }
@@ -37,7 +41,5 @@
 }
 
 @media screen and (min-width: 769px){
-    .logo-wrapper{
-        margin: auto 0px auto 20px;
-    }
+    
 }

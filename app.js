@@ -13,7 +13,8 @@ const TwitterStrategy = require('passport-twitter');
 //routing files
 const index = require('./routes/index');
 const users = require('./routes/users');
-const api = require('./routes/api');
+const api_user = require('./routes/api/user');
+const api_hobby = require('./routes/api/hobby');
 
 //app create
 const app = express();
@@ -52,7 +53,9 @@ const sessionCheck = (req, res, next) => {
 //routing files routing
 app.use('/', index);
 app.use('/users', sessionCheck, users);
-app.use('/api', api);
+app.use('/api/user', api_user);
+app.use('/api/hobby', api_hobby);
+
 
 //view files routing
 app.set('views', path.join(__dirname, 'views'));
@@ -96,7 +99,7 @@ app.get('/cooperation/callback', passport.authenticate('twitter', {failureRedire
     url: user.url,
     profile_image_url_https: user.profile_image_url_https.replace("normal.jpg", "400x400.jpg"),
     oauth_token: req.query.oauth_token,
-    oauth_token_secret: req.query.oauth_token_secret
+    oauth_token_secret: req.query.oauth_verifier
   }
   delete req.session.passport;
   res.redirect('/users/profile'); 

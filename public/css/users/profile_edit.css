@@ -32,7 +32,9 @@
 
 .my-hobbies li {
     padding: .5em 0;
-    border-radius: 5px
+    border-radius: 5px;
+    width: 99%;
+    margin: auto;
 }
 
 .hobby{
@@ -65,12 +67,13 @@ button .fa {
 }
 
 .column .add-button-wrapper {
-    text-align: right;
-    margin-top: .1em;
+    padding: 1em 0.5%;
 }
 
 .list li {
     cursor:pointer; 
+    width: 99%;
+    margin: auto;
 }
 
 .list li span {

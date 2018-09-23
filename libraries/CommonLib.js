@@ -16,7 +16,16 @@ const CommonLib = {
         request(options, function(error, responce, body){
             callback(error, responce, body);
         });
-    }    
+    },
+    getError: function(res, error, header){
+        if(error){
+            res.status(500);
+            res.end('Internal Server Error');
+            return true;
+        } else {
+            return false;
+        }
+    },
 }
 
 module.exports = CommonLib;

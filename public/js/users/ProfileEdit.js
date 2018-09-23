@@ -22,15 +22,28 @@ var ProfileEdit = function(container, user_id){
                 $.each(instance.user_hobbies, function(){
                     var hobby = this;
 
-                    var genre = hobby.hobbyInfo.genre; 
-                    var value = hobby.hobbyInfo.categoryName 
-                        + (genre.genreName ? " > " + genre.genreName : "") 
-                        + (genre.tag.tagName ? " > " + genre.tag.tagName : ""); 
-                    
+                    var head = "";
+                    var main = hobby.hobbyInfo.categoryName;
+
+                    if (hobby.hobbyInfo.genre.genreId) {
+                        var genre = hobby.hobbyInfo.genre;
+                        head += main;
+                        main = genre.genreName;
+                        
+                        if(genre.tag.tagId) {
+                            var hobby_tag = genre.tag;
+                            head += " / " + main;
+                            main = hobby_tag.tagName;
+                        }
+                    }
+
                     tag += ""
                         + "<li hobby-id=" + hobby.hobbyId + ">"
                         + "   <div class='hobby'>"
-                        + "       <span>" + value + "</span>"
+                        + "       <div class='name'>"
+                        + "         <p class='header'>" + head + "</p>"
+                        + "         <p class='main'>" + main + "</p>"
+                        + "       </div>"
                         + "       <button class='btn bg-danger hobby-delete'><i class='fa fa-trash'></i></button>"
                         + "   </div>"
                         + "</li>";

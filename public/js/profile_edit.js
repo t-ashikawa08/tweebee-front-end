@@ -18,15 +18,26 @@ var ProfileEdit = function(container, user_id){
             });
         });
         instance.container.find(".hobby-delete").on("click", function(){
-            var id = $(this).closest("li").attr("hobby-id");
-            var json = { hobby_id : id };
-            TweeBee.ajax({
-                url: "/api/user/hobby_delete",
-                method: "post",
-                data: json,
-                callback: function(res){
-                    alert("delete")    
-                },
+            swal({
+                title: "趣味を削除します",
+                text: "よろしいですか？",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then(function (agree) {
+                if (agree) {
+                    var id = $(this).closest("li").attr("hobby-id");
+                    var json = { hobby_id : id };
+                    TweeBee.ajax({
+                        url: "/api/user/hobby_delete",
+                        method: "post",
+                        data: json,
+                        callback: function(res){
+                            alert("delete")    
+                        },
+                    });
+                }
             });
         });
     }
@@ -51,7 +62,7 @@ var ProfileEdit = function(container, user_id){
             tag += ""
                 + "<li class='list-group-item' tb-id='" + this[type + "Id"] + "'>" 
                 + " <span>"
-                + this[type + "Name"] + "<span class='user-add'><i class='fa fa-user-plus'></i></span>" 
+                + this[type + "Name"] + "<span class='user-add'><i title='趣味に追加する' class='fa fa-user-plus'></i></span>" 
                 + " </span>"
                 + "</li>"
             hash[this[type + "Id"]] = this;
@@ -117,5 +128,13 @@ var ProfileEdit = function(container, user_id){
                 }
             });
         });
+    }
+
+    this._addHobbyRow = function() {
+
+    }
+
+    this._userHobbyRefresh = function() {
+        
     }
 }

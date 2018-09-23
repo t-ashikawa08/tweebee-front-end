@@ -49,10 +49,13 @@
     height: calc(100% / 10 * 8);
     border-radius: 5px;
     background: white;
+    overflow: hidden;
 }
 
 .user-profile-text .others .others-inner{
     padding: 1em;
+    overflow: auto;
+    height: 100%;
 }
 
 .user-profile-text .others .others-inner .fa{

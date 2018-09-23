@@ -1,0 +1,13 @@
+body .tb-alert {
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  text-align: center;
+  animation: fade-in 200ms ease-out;
+  transition: opacity,transform 200ms ease-out; }
+body .tb-alert-close {
+  opacity: 0; }
+
+/*# sourceMappingURL=tb-alert.css.map */

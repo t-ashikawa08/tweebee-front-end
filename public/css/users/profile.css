@@ -91,9 +91,12 @@
 }
 
 @media screen and (max-width: 768px) {
+    .profile-wrapper {
+        display: block;
+    }
     .user-container{
         width: 100%;
-        display: none;
+        padding-top: 5%;
     }
 
     .sp-footer {

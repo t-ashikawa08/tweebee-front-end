@@ -84,26 +84,3 @@
         </div>
     </div>
 </div>
-<div class="sp-footer hide-pc">
-    <span class="section-button active" target="user-profile-container"><i class="fa fa-user"></i></span>
-    <span class="section-button" target="hobby-container"><i class="fa fa-align-justify"></i></span>
-    <span class="section-button" target="network-container"><i class="fa fa-search-plus"></i></span>
-    <script>
-        $(function(){
-            $(".section-button").on("click", function(){
-                $.each($(".section-button"), function(){
-                    $(this).removeClass("active");
-                });
-
-                $(this).addClass("active");
-
-                $.each($(".user-container"), function(){
-                    $(this).removeClass("active");
-                });
-                
-                var selector = "." + $(this).attr("target");
-                $(selector).addClass("active");
-            });
-        });
-    </script>
-</div>

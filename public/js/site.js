@@ -43,7 +43,7 @@ var TweeBee = {
 
             setTimeout(function(){
                 modal.remove();    
-            }, 200);
+            }, 150);
         });
     
         return modal.find(".modal-body");

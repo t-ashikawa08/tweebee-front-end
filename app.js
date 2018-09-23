@@ -5,14 +5,12 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
-
-const config = require('config');
-const passport = require('passport');
-const TwitterStrategy = require('passport-twitter');
+const passport = require('./libraries/Passport');
 
 //routing files
 const index = require('./routes/index');
 const users = require('./routes/users');
+const cooperation = require('./routes/cooperation');
 const api_user = require('./routes/api/user');
 const api_hobby = require('./routes/api/hobby');
 
@@ -50,60 +48,23 @@ const sessionCheck = (req, res, next) => {
   }
 };
 
+//passport
+app.use(passport.initialize());
+app.use(passport.session());
+
 //routing files routing
 app.use('/', index);
 app.use('/users', sessionCheck, users);
+app.use('/cooperation', cooperation);
 app.use('/api/user', api_user);
 app.use('/api/hobby', api_hobby);
-
 
 //view files routing
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-//public files routing
+//public dir routing
 app.use(express.static(path.join(__dirname, 'public')));
-
-//twitter cooperation
-passport.serializeUser((user, callback) => {
-  callback(null, user);
-});
-
-passport.deserializeUser((obj, callback) => {
-  callback(null, obj);
-});
-
-passport.use(new TwitterStrategy({
-  consumerKey: config.TwitterConfig.ApiKey,
-  consumerSecret: config.TwitterConfig.ApiSecretKey,
-  callbackURL: config.CallBackUrl
-}, (accessToken, refreshToken, profile, callback) => {
-  process.nextTick(() => {
-    return callback(null, profile);
-  });
-}));
-
-app.use(passport.initialize());
-app.use(passport.session());
-
-//twitter cooperation routing
-app.get('/cooperation', passport.authenticate('twitter'));
-app.get('/cooperation/callback', passport.authenticate('twitter', {failureRedirect: '/login' }), (req, res) => {
-  let user = req.session.passport.user._json;
-  req.session.user = {
-    id: user.id,
-    name: user.name,
-    screen_name: user.screen_name,
-    description: user.description,
-    location: user.location,
-    url: user.url,
-    profile_image_url_https: user.profile_image_url_https.replace("normal.jpg", "400x400.jpg"),
-    oauth_token: req.query.oauth_token,
-    oauth_token_secret: req.query.oauth_verifier
-  }
-  delete req.session.passport;
-  res.redirect('/users/profile'); 
-});
 
 //http header information
 app.use(function (req, res, next) {

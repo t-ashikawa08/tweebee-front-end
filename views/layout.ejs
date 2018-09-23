@@ -14,6 +14,15 @@
         <link href="/css/layout.css" rel="stylesheet">
     </head>
     <body>
+        <script>
+            $(function(){
+                if(window.parent.screen.width > 768){
+                    TweeBee.isPc = true;
+                } else {
+                    TweeBee.isSp = true;
+                }
+            });
+        </script>
         <div class="navigation">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <a href="/users/profile">
@@ -31,6 +40,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#"><span class="fa fa-edit" aria-hidden="true"></span>ツイート発行</a>
+                        </li>
+                        <li class="nav-item hide-pc">
+                            <a class="nav-link" href="#"><span class="fa fa-chart-bar" aria-hidden="true"></span>ランキング</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#"><span class="fa fa-cog" aria-hidden="true"></span>設定</a>

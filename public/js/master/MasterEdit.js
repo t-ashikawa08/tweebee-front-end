@@ -2,11 +2,20 @@ var MasterEdit = function(container){
     var instance = this;
     instance.container = container;
     instance.master = [];
+    instance.swiper = null;
     
     instance.render = function() {
         instance.container.html(instance._createBaseAddDialog());
 
         instance._refresh();
+
+        if(TweeBee.isSp){
+            instance.swiper = new Swiper('.swiper-container', {
+                pagination: {
+                    el: '.swiper-pagination',
+                },
+            });
+        }
     }
 
     instance._refresh = function(){
@@ -23,10 +32,13 @@ var MasterEdit = function(container){
 
     instance._createBaseAddDialog = function(){
         var tag = ""
-            + "<div class='hobby-add-container-wrapper'>"
-            + " <div class='column category-container'></div>"
-            + " <div class='column genre-container'></div>"
-            + " <div class='column tag-container'></div>"
+            + "<div class='swiper-container'>"
+            + " <div class='hobby-add-container-wrapper swiper-wrapper'>"
+            + "     <div class='column category-container swiper-slide'></div>"
+            + "     <div class='column genre-container swiper-slide'></div>"
+            + "     <div class='column tag-container swiper-slide'></div>"
+            + " </div>"
+            + " <div class='swiper-pagination'></div>"
             + "</div>";
     
         return tag;
@@ -78,6 +90,10 @@ var MasterEdit = function(container){
     
                 case "tag":
                     break;
+            }
+
+            if(instance.swiper){
+                instance.swiper.slideNext();
             }
         }
 

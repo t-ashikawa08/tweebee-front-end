@@ -1,16 +1,31 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>
 <script src="/js/master/MasterEdit.js"></script>
 <script src="/js/users/ProfileEdit.js"></script>
 <link href="/css/users/profile_edit.css" rel="stylesheet">
+<script>
+    $(function(){
+        if (TweeBee.isSp) {
+            var tag = ""
+                + "<link"
+                + " href='https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/css/swiper.min.css'" 
+                + " type='text/css'"
+                + " rel='stylesheet'"
+                + ">";
+
+            $("head").append(tag);
+        }
+    });
+</script>
 <div class="profile-edit-wrapper">
-    <div class="hobby-container">
+    <div class="edit-container hobby-container">
         <ul class="my-hobbies"></ul>
       
         <button class="btn bg-success hobby-add" style="color:white">
             <i class="fa fa-plus-circle"></i>趣味を追加する
         </button>
     </div>
-    <div class="ranking-container">
+    <div class="edit-container ranking-container hide-sp">
         ranking
     </div>
 </div>

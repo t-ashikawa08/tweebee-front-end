@@ -52,13 +52,17 @@ var TweeBee = {
 
         var body = modal.find(".modal-body");
 
+        $("body").css("overflow", "hidden");
+
         modal.find(".modal-close").on("click", function(){
+            $("body").css("overflow", "auto");
+
             baseOption.callback(body);
 
             modal.addClass("tb-modal-close");
 
             setTimeout(function(){
-                modal.remove();    
+                modal.remove();
             }, 150);
         });
 
@@ -87,7 +91,9 @@ var TweeBee = {
                 alert.remove();
             }, 1000);
         }, 2000);
-    }
+    },
+    isSp: false,
+    isPc: false,
 }
 
 var tb_create_uid = function(){

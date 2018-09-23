@@ -37,9 +37,19 @@
     margin: auto;
 }
 
-.hobby{
+.hobby {
     display:flex;
     padding: 0 .3em;
+}
+
+.hobby .name .header {
+    margin-bottom: 0;
+    color: darkgray;
+    font-size: small;
+}
+
+.hobby .name .main {
+    margin-bottom: 0;
 }
 
 .hobby button {
@@ -88,4 +98,35 @@ button .fa {
 
 .list .active span .user-add .fa {
     color: white!important; 
+}
+
+@media screen and (max-width: 768px) {
+    .profile-edit-wrapper {
+        display: block;
+        margin-bottom: 40px;
+    }
+
+    .hobby-container, .my-hobbies{
+        height: auto;
+    }
+
+    .hobby-container{
+        padding: 10px 0 0 0;
+    }
+
+    .edit-container{
+        width: 100%;
+    }
+
+    .column{
+        width: 100%;
+    }
+
+    .list li{
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 769px){
+    
 }

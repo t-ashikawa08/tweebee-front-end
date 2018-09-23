@@ -1,4 +1,4 @@
-const CommonLib = {
+const lib = {
     ajax: function(url, json, callback){
         const request = require('request');
         const options = {
@@ -28,4 +28,4 @@ const CommonLib = {
     },
 }
 
-module.exports = CommonLib;
+module.exports = lib;

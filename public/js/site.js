@@ -19,33 +19,77 @@ var TweeBee = {
             alert(status);
         });
     },
-    openModal: function(container, id){
-        if (!id){
+    openModal: function(container, option){
+        var baseOption = {
+            id: null,
+            tag: null,
+            initialize: function() {},
+            callback: function() {}
+        }
+
+        $.extend(baseOption, option);
+
+        if (!baseOption.id){
             alert('id is not found');
             return;
         }
+
         var baseTag = ""
-            + "<div id='" + id + "' class='modal tb-modal' role='dialog' data-backdrop='static'>"
+            + "<div id='" + baseOption.id + "' class='modal tb-modal' role='dialog' data-backdrop='static'>"
             + " <div class='modal-dialog modal-lg'>"
             + "     <div class='modal-content'>"
             + "         <div class='modal-header'><div class='modal-close'><i class='fa fa-times-circle'></i></div></div>"
-            + "         <div class='modal-body'></div>"
+            + "         <div class='modal-body'>"
+            + baseOption.tag
+            + "         </div>"
             + "     </div>"
             + " </div>"
             + "</div>";
 
         container.append(baseTag);
 
-        var modal = container.find("#" + id);
+        var modal = container.find("#" + baseOption.id);
+
+        var body = modal.find(".modal-body");
 
         modal.find(".modal-close").on("click", function(){
+            baseOption.callback(body);
+
             modal.addClass("tb-modal-close");
 
             setTimeout(function(){
                 modal.remove();    
             }, 150);
         });
-    
-        return modal.find(".modal-body");
+
+        baseOption.initialize(body);
+
+        return body;
+    },
+    showMessage: function(message, parentContainer) {
+        var uid = tb_create_uid();
+        var tag = ""
+            + "<div id='" + uid + "' class='tb-alert alert alert-primary' role='alert'>"
+            + message
+            + "</div>";
+        
+        if (parentContainer){
+            parentContainer.append(tag);
+        } else {
+            $("body").append(tag);
+        }
+        
+        var alert = $("#" + uid);
+        setTimeout(function(){
+            alert.addClass("tb-alert-close");
+
+            setTimeout(function(){
+                alert.remove();
+            }, 1000);
+        }, 2000);
     }
+}
+
+var tb_create_uid = function(){
+    return "u_id" + Math.round(Math.random() * 100000000);
 }

@@ -1,0 +1,60 @@
+@import url(http://fonts.googleapis.com/earlyaccess/notosansjp.css);
+@import "./component/tb-modal.scss";
+@import "./component/tb-alert.scss";
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+        transform: translateY(-10%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
+
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-10%);
+    }
+}
+
+body{
+    font-size: 12pt;
+    font-family: "Noto Sans JP', sans-serif";
+    color: #444444;
+    background: #ececec;
+}
+
+a {
+    color: #444444;
+}
+
+.btn-primary a {
+    color: white;
+}
+
+.container {
+    max-width:1024px;
+}
+
+.fa {
+    padding-right: .2em;
+}
+
+@media screen and (max-width: 768px) {
+    .hide-sp{
+        display:none;
+    }
+}
+
+@media screen and (min-width: 769px){
+    .hide-pc{
+        display:none;
+    }
+}

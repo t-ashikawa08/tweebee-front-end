@@ -1,0 +1,64 @@
+@keyframes modal-back-fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes modal-back-fade-out {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+body {
+    .tb-modal {
+        display:block;
+        background-color: rgba(0, 0, 0, 0.5);
+        transition: background-color 0.3s;
+        animation: modal-back-fade-in 200ms ease-out;
+        
+        .modal-dialog {
+            height: calc(100% - 3.5rem);
+            background: white;
+            border: 1px solid rgba(0,0,0,.2);
+            border-radius: 10px;
+            overflow: hidden;
+            animation: fade-in 200ms ease-out;
+
+            .modal-header{
+                height: calc(100% / 10 * 1);
+                
+                .modal-close {
+                    margin-left: auto; 
+                    font-size: 20pt;
+                    cursor: pointer;
+                }
+            }
+
+            .modal-body {
+                height: calc(100% / 10 * 9);
+                border:none;
+                padding:0;
+                overflow:hidden;
+            }
+        }
+
+        .modal-lg {
+            max-width:80vw;
+        }
+    }
+
+    .tb-modal-close {
+        animation: modal-back-fade-out 200ms ease-out;
+        
+        .modal-dialog {
+            animation: fade-out 200ms ease-out;
+        }
+    }
+} 

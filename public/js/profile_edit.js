@@ -2,22 +2,81 @@ var ProfileEdit = function(container, user_id){
     var instance = this;
     instance.container = container;
     instance.user_id = user_id;
+    instance.user_hobbies = [];
     instance.master = [];
 
-    this.AttachEvent = function(){
+    this.render = function() {
+        var instance = this;
+
+        instance._refresh();
+
+        instance._attachEvent();
+    }
+
+    this._refresh = function(){
+        var instance = this;
+
+        TweeBee.ajax({
+            url: "/api/user/hobby_get",
+            method: "get",
+            callback: function(res){
+                instance.user_hobbies = res;
+
+                var tag = "";
+
+                $.each(instance.user_hobbies, function(){
+                    var hobby = this;
+
+                    var genre = hobby.hobbyInfo.genre; 
+                    var value = hobby.hobbyInfo.categoryName 
+                        + (genre.genreName ? " > " + genre.genreName : "") 
+                        + (genre.tag.tagName ? " > " + genre.tag.tagName : ""); 
+                    
+                    tag += ""
+                        + "<li hobby-id=" + hobby.hobbyId + ">"
+                        + "   <div class='hobby'>"
+                        + "       <span>" + value + "</span>"
+                        + "       <button class='btn bg-danger hobby-delete'><i class='fa fa-trash'></i></button>"
+                        + "   </div>"
+                        + "</li>";
+                });
+                
+                instance.container.find(".my-hobbies").html(tag);
+
+                instance._attachEventList();     
+            }
+        });
+    }
+
+    this._attachEvent = function(){
         instance.container.find(".hobby-add").on("click", function(){
-            var modal = TweeBee.openModal(instance.container, "hobby-add");  
-            modal.html(instance._createBaseAddDialog());
-            TweeBee.ajax({
-                url: "/api/master",
-                method: "get",
-                callback: function(res){
-                    instance.master = res;
-                    instance._renderList(modal, "category", instance.master);
-                }
+            TweeBee.openModal(instance.container, {
+                id: "hobby-add",
+                tag: instance._createBaseAddDialog(),
+                initialize: function(modal){
+                    TweeBee.ajax({
+                        url: "/api/master",
+                        method: "get",
+                        callback: function(res){
+                            instance.master = res;
+                            instance._renderList(modal, "category", instance.master);
+                        }
+                    });
+                },
+                callback: function(modal) {
+                    instance._refresh();
+                },
             });
         });
+    }
+
+    this._attachEventList = function(){
+        var instance = this;
+
         instance.container.find(".hobby-delete").on("click", function(){
+            var id = $(this).closest("li").attr("hobby-id");
+            var json = { hobby_id : id };
+
             swal({
                 title: "趣味を削除します",
                 text: "よろしいですか？",
@@ -26,18 +85,18 @@ var ProfileEdit = function(container, user_id){
                 dangerMode: true,
             })
             .then(function (agree) {
-                if (agree) {
-                    var id = $(this).closest("li").attr("hobby-id");
-                    var json = { hobby_id : id };
-                    TweeBee.ajax({
-                        url: "/api/user/hobby_delete",
-                        method: "post",
-                        data: json,
-                        callback: function(res){
-                            alert("delete")    
-                        },
-                    });
-                }
+                if (!agree) return;
+                
+                TweeBee.ajax({
+                    url: "/api/user/hobby_delete",
+                    method: "post",
+                    data: json,
+                    callback: function(res){
+                        instance.user_hobbies = res;
+                        instance._refresh();
+                        TweeBee.showMessage("削除が完了しました");
+                    },
+                });
             });
         });
     }
@@ -123,8 +182,8 @@ var ProfileEdit = function(container, user_id){
                 url: "/api/user/hobby_register",
                 method: "POST",
                 data: json,
-                callback: function(res){
-                    alert("dekita");
+                callback: function(){
+                    TweeBee.showMessage("登録が完了しました");
                 }
             });
         });
@@ -132,9 +191,5 @@ var ProfileEdit = function(container, user_id){
 
     this._addHobbyRow = function() {
 
-    }
-
-    this._userHobbyRefresh = function() {
-        
     }
 }

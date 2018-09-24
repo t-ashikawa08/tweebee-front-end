@@ -7,17 +7,17 @@
 }
 
 .user-profile-container{
-    width: calc(100vw / 12 * 3);
+    width: calc(100% / 12 * 3);
     background: #3aabd2;
 }
 
 .hobby-container{
-    width: calc(100vw / 12 * 6);
+    width: calc(100% / 12 * 6);
     background: white;
 }
 
 .network-container{
-    width: calc(100vw / 12 * 3);
+    width: calc(100% / 12 * 3);
 }
 
 .user-profile-img{

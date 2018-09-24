@@ -22,6 +22,9 @@ router.get('/callback', passport.authenticate('twitter', {failureRedirect: '/log
         oauth_token_secret: req.query.oauth_verifier
     }
 
+    console.log("user:");
+    console.log(req.session.user);
+
     delete req.session.passport;
 
     commonLib.ajax(config.API + "/user/register", { user_id: user.id }, function(error, responce, body){

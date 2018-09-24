@@ -32,6 +32,12 @@
     margin: auto;
 }
 
+.nav-link img{
+    width: 14px;
+    vertical-align: baseline;
+    margin-right: 5px;
+}
+
 .body-container{
     margin-top:60px;
 }

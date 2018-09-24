@@ -1,0 +1,80 @@
+.tb-ranking-container{
+    height: 100%;
+    width: 100%;
+    
+    .ranking-header{
+        max-height: 20%;
+        background: white;
+    
+        .title-content{
+            text-align: center;
+            padding: .3em;
+    
+            h2 {
+                font-family: 'Alegreya Sans SC', sans-serif;
+                position: relative;
+                display: inline-block;
+            }
+    
+            h2:before{
+                position: absolute;
+                top: 1.3em;
+                left: 0;
+                content: "";
+                display: inline-block;
+                width: 0;
+                height: 2px;
+                background: darkgray;
+                transition: 500ms;
+            }                
+        }
+    }
+    
+    .ranking-body{
+        min-height: 80%;
+        overflow: auto;
+        background: #3aabd2;
+        max-height: calc(100% - 56px);
+
+        .ranking-row {
+            display: flex;
+            justify-content: space-between;
+            padding: .5em;
+            color: white;
+    
+            .rank-number{
+                width: 40px;
+                text-align: center;
+            }                
+        }
+    
+        .no-1, .no-2, .no-3{
+            .rank-number {
+                height: 40px;
+            }
+    
+            .name, span:last-child{
+                font-size: 1.2em;
+                font-weight: bold;
+                padding-top: 5px;
+            }
+        }
+    }
+    
+    .description-header, .description-body {
+        background: #909090!important;
+        color: white;
+    }
+    
+    .description-body {
+        text-align: center;
+    }        
+}
+
+.tb-ranking-container:hover {
+    .ranking-header {
+        h2:before{
+            width: 100%!important;
+        }
+    }
+}

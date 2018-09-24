@@ -5,6 +5,8 @@ var MasterRanking = function(container) {
     this.render = function() {
         instance.container.html(instance._createBaseTag());
 
+        instance._attachEvent();
+
         instance._refresh();
     }
 
@@ -15,64 +17,47 @@ var MasterRanking = function(container) {
         });
     }
 
+    this._attachEvent = function(){
+        instance.container.find(".grid").on("click", function(){
+            var type = $(this).attr("tb-type");
+            if(!type) return;
+
+            TweeBee.openModal(instance.container, {
+                id: "ranking-detail",
+                initialize: function(modal){
+                    modal.html("<div class='" + type + " tb-ranking-container'></div>");
+
+                    var l_id = TweeBee.loading.open(modal);
+                    TweeBee.ajax({
+                        url: "/api/hobby/ranking/?type=" + type,
+                        method: "get",
+                        callback: function(res){
+                            new TweeBeeHobbyRanking(modal).render(res, type);
+                            TweeBee.loading.close(l_id, modal);
+                        }
+                    });                    
+                },
+                size: "small"
+            });
+        });
+    }
+
     this._refreshPerType = function(type){
         var l_id = TweeBee.loading.open(instance.container.find("." + type));
         TweeBee.ajax({
             url: "/api/hobby/ranking/?type=" + type,
             method: "get",
             callback: function(res){
-                instance._renderRanking(type, res);
+                new TweeBeeHobbyRanking(instance.container).render(res, type);
                 TweeBee.loading.close(l_id, instance.container);
             }
         });
     }
 
-    this._renderRanking = function(type, json) {
-        var name = "";
-        switch(type){
-            case "category":
-                name = "Category";
-                break;
-
-            case "genre":
-                name = "Genre";
-                break;
-
-            case "tag":
-                name = "Tag";
-                break;
-        }
-
-        var tag = ""
-            + "<div class='ranking-header'>"
-            + " <div class='title-content'>"
-            + "     <h2>" + name + "</h2>"
-            + " </div>"
-            + "</div>"
-            + "<div class='ranking-body'>";
-        $.each(json, function(i){
-            var number_column = ""
-            if (i < 3){
-                number_column = "<img src='/img/rank" + (i + 1) + ".svg' />"
-            }else{
-                number_column = (i + 1)
-            }
-
-            tag += "<div class='ranking-row no-" + (i + 1) + "'>"
-                + " <span class='rank-number'>" + number_column + "</span>"
-                + " <span class='name'>" + this.name + "</span>"
-                + " <span>" + this.count + "</span>"
-                + "</div>";
-        });
-        tag += "</div>";
-
-        instance.container.find("." + type).html(tag);
-    }
-
     this._createBaseTag = function() {
         var tag = ""
-            + "<div class='tb-ranking-container'>"
-            + " <div class='description ranking-grid'>"
+            + "<div class='ranking-wrapper'>"
+            + " <div class='description grid tb-ranking-container'>"
             + "     <div class='description-header ranking-header'>"
             + "         <div class='title-content'>"
             + "             <h2>What Is Attention?</h2>"
@@ -82,9 +67,9 @@ var MasterRanking = function(container) {
             + "         各階層ごとの趣味ランキングです"
             + "     </div>"
             + " </div>"
-            + " <div class='category ranking-grid'></div>"
-            + " <div class='genre ranking-grid'></div>"
-            + " <div class='tag ranking-grid'></div>"
+            + " <div class='category grid tb-ranking-container' tb-type='category'></div>"
+            + " <div class='genre grid tb-ranking-container' tb-type='genre'></div>"
+            + " <div class='tag grid tb-ranking-container' tb-type='tag'></div>"
             + "</div>"
 
         return tag;

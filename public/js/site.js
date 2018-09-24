@@ -25,7 +25,8 @@ var TweeBee = {
             id: null,
             tag: null,
             initialize: function() {},
-            callback: function() {}
+            callback: function() {},
+            size: "large"
         }
 
         $.extend(baseOption, option);
@@ -37,7 +38,7 @@ var TweeBee = {
 
         var baseTag = ""
             + "<div id='" + baseOption.id + "' class='modal tb-modal' role='dialog' data-backdrop='static'>"
-            + " <div class='modal-dialog modal-lg'>"
+            + " <div class='modal-dialog modal-" + baseOption.size + "'>"
             + "     <div class='modal-content'>"
             + "         <div class='modal-header'><div class='modal-close'><i class='fa fa-times-circle'></i></div></div>"
             + "         <div class='modal-body'>"

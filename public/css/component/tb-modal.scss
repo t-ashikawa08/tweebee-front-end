@@ -49,8 +49,16 @@ body {
             }
         }
 
-        .modal-lg {
-            max-width:80vw;
+        .modal-large {
+            max-width: 80vw;
+        }
+
+        .modal-middle{
+            max-width: 50vw;
+        }
+
+        .modal-small{
+            max-width: 30vw;
         }
     }
 

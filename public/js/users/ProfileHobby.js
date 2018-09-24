@@ -5,7 +5,7 @@ var ProfileHobby = function(container){
     instance.render = function(){
         instance.container.html(instance._createBaseTag());
 
-        instance.container.find(".tree-container").css({
+        instance.container.find(".tb-tree-container").css({
             "height": instance.container.height() + "px", 
             "width" : instance.container.width() + "px"});
 
@@ -22,17 +22,70 @@ var ProfileHobby = function(container){
 
                 var simple_chart_config = {
                     chart: {
-                        container: ".tree-container"
+                        container: ".tb-tree-container"
                     },
                     
                     nodeStructure: {
-                        text: { name: "Parent node" },
+                        text: { 
+                            name: "Parent node", 
+                        },
+                        image: "https://pbs.twimg.com/profile_images/950286267647799296/FspWXyM__400x400.jpg",
                         children: [
                             {
-                                text: { name: "First child" }
+                                HTMLclass: "category",
+                                text: {name: "category"},
+                                children: [
+                                    {
+                                        HTMLclass: "genre",
+                                        text: {name: "genre"},
+                                        children:[
+                                            {
+                                                HTMLclass: "tag",
+                                                text: {name: "tag"},
+                                            },
+                                            {
+                                                HTMLclass: "tag",
+                                                text: {name: "tag"},
+                                            },
+                                            {
+                                                HTMLclass: "tag",
+                                                text: {name: "tag"},
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        HTMLclass: "genre",
+                                        text: {name: "genre"}
+                                    }
+                                ],
                             },
                             {
-                                text: { name: "Second child" }
+                                HTMLclass: "category",
+                                text: {name: "category"},
+                                children: [
+                                    {
+                                        HTMLclass: "genre",
+                                        text: {name: "genre"},
+                                    },
+                                    {
+                                        HTMLclass: "genre",
+                                        text: {name: "genre"},
+                                        children:[
+                                            {
+                                                HTMLclass: "tag",
+                                                text: {name: "tag"},
+                                            },
+                                            {
+                                                HTMLclass: "tag",
+                                                text: {name: "tag"},
+                                            },
+                                            {
+                                                HTMLclass: "tag",
+                                                text: {name: "tag"},
+                                            }
+                                        ]
+                                    }
+                                ],
                             }
                         ]
                     }
@@ -49,7 +102,7 @@ var ProfileHobby = function(container){
 
     instance._createBaseTag = function(){
         var tag = ""
-            + "<div class='tree-container'></div>";
+            + "<div class='tb-tree-container'></div>";
 
         return tag;
     }

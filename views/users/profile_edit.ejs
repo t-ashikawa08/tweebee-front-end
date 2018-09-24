@@ -1,8 +1,11 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.bundle.min.js"></script>
 <script src="/js/master/MasterEdit.js"></script>
+<script src="/js/master/MasterRanking.js"></script>
 <script src="/js/users/ProfileEdit.js"></script>
 <link href="/css/users/profile_edit.css" rel="stylesheet">
+
 <script>
     $(function(){
         if (TweeBee.isSp) {
@@ -25,13 +28,14 @@
             <i class="fa fa-plus-circle"></i>趣味を追加する
         </button>
     </div>
-    <div class="edit-container ranking-container hide-sp">
-        ranking
-    </div>
+    <div class="edit-container ranking-container hide-sp"></div>
 </div>
 <script>
     $(function(){
         var profile_edit = new ProfileEdit($(".profile-edit-wrapper"));
         profile_edit.render();
+
+        var ranking = new MasterRanking($(".ranking-container"));
+        ranking.render();
     });
 </script>

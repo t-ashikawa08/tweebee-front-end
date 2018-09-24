@@ -1,0 +1,34 @@
+body{
+    .tb-tree-container {
+        .node {
+            img {
+                width: 5em;
+                border-radius: 5px;
+            }
+    
+            p {
+                margin: 0;
+            }
+
+            border-radius: 10px;
+        }
+    
+        .category {
+            border: lightcoral solid 2px;
+            padding: 0.5em;
+            font-size: 1.2em;
+        }
+    
+        .genre{
+            border: lightslategray solid 2px;
+            padding: 0.5em;
+            font-size: 1em;
+        }
+    
+        .tag{
+            border: lightblue solid 2px;
+            padding: 0.5em;
+            font-size: 0.8em;
+        }
+    }
+}

@@ -12,3 +12,16 @@
     overflow: hidden;
     cursor: pointer;
 }
+
+.description{
+    cursor: default!important;
+}
+
+.description-header, .description-body {
+    background: #909090!important;
+    color: white;
+}
+
+.description-body {
+    text-align: center;
+}    

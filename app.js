@@ -66,6 +66,12 @@ app.set('view engine', 'ejs');
 //public dir routing
 app.use(express.static(path.join(__dirname, 'public')));
 
+//not found
+app.use(function(req, res, next){
+  res.status(404);
+  res.render('404');
+});
+
 //http header information
 app.use(function (req, res, next) {
   res.removeHeader('X-Powered-By');

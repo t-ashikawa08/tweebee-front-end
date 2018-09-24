@@ -3,7 +3,12 @@ const commonLib = require('../../libraries/CommonLib');
 const config = require('config');
 
 router.get('/hobby_get', function(req, res, next){
-    commonLib.ajax(config.API + "/user/hobby_get", {user_id : req.session.user.id}, function(error, responce, body){
+    var json = {
+        user_id : req.session.user.id, 
+        type: req.query.type 
+    }
+    
+    commonLib.ajax(config.API + "/user/hobby_get", json, function(error, responce, body){
         if (commonLib.getError(res, error, responce )) return;
         res.send(JSON.stringify(body.result));    
     });

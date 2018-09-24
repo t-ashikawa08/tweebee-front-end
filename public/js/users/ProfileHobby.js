@@ -1,0 +1,53 @@
+var ProfileHobby = function(container){
+    var instance = this;
+    instance.container = container;
+
+    instance.render = function(){
+        instance.container.html(instance._createBaseTag());
+
+        instance.container.find(".tree-container").css({
+            "height": instance.container.height() + "px", 
+            "width" : instance.container.width() + "px"});
+
+        instance._refresh();
+    }
+
+    instance._refresh = function(){
+        TweeBee.ajax({
+            url: "/api/user/hobby_get?type=tree",
+            method: "get",
+            callback: function(res){
+                instance.user_hobbies = res;
+
+                var simple_chart_config = {
+                    chart: {
+                        container: ".tree-container"
+                    },
+                    
+                    nodeStructure: {
+                        text: { name: "Parent node" },
+                        children: [
+                            {
+                                text: { name: "First child" }
+                            },
+                            {
+                                text: { name: "Second child" }
+                            }
+                        ]
+                    }
+                };
+                
+                var my_chart = new Treant(simple_chart_config);
+
+                console.log(instance.user_hobbies);
+            }
+        });
+    }
+
+    instance._createBaseTag = function(){
+        var tag = ""
+            + "<div class='tree-container'></div>";
+
+        return tag;
+    }
+}

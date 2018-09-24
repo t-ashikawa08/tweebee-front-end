@@ -12,7 +12,7 @@ var ProfileEdit = function(container, user_id){
 
     instance._refresh = function(){
         TweeBee.ajax({
-            url: "/api/user/hobby_get",
+            url: "/api/user/hobby_get?type=list",
             method: "get",
             callback: function(res){
                 instance.user_hobbies = res;

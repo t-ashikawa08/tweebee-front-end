@@ -60,6 +60,13 @@ body .tb-alert {
 body .tb-alert-close {
   opacity: 0; }
 
+.loading-img-wrapper {
+  position: absolute;
+  z-index: 9999;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
+
 @keyframes fade-in {
   0% {
     opacity: 0;

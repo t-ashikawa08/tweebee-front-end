@@ -8,7 +8,8 @@ var TweeBee = {
         }
         
         $.extend(basicOption, option);
-        $.ajax({ async: false, 
+
+        $.ajax({ async: true, 
             url: basicOption.url, 
             type: basicOption.method, 
             data: basicOption.data,
@@ -91,6 +92,26 @@ var TweeBee = {
                 alert.remove();
             }, 1000);
         }, 2000);
+    },
+    loading: {
+        open: function(container) {
+            var id = "loading-" + tb_create_uid();
+            var tag = ""
+                + "<div id='" + id + "' class='loading-img-wrapper'>"
+                + " <img src='/img/loading.gif' />"
+                + "</div>";
+    
+            container.css({"position": "relative"});
+            container.append(tag);
+    
+            return id;
+        },
+        close: function(id, container){
+            if(container){
+                container.css({"position": "inherit"});    
+            }
+            $("#" + id).remove();
+        }
     },
     isSp: false,
     isPc: false,

@@ -13,6 +13,7 @@ var ProfileHobby = function(container){
     }
 
     instance._refresh = function(){
+        var l_id = TweeBee.loading.open(instance.container);
         TweeBee.ajax({
             url: "/api/user/hobby_get?type=tree",
             method: "get",
@@ -40,6 +41,8 @@ var ProfileHobby = function(container){
                 var my_chart = new Treant(simple_chart_config);
 
                 console.log(instance.user_hobbies);
+
+                TweeBee.loading.close(l_id, instance.container);
             }
         });
     }

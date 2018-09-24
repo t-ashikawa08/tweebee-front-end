@@ -19,13 +19,17 @@ var MasterEdit = function(container){
     }
 
     instance._refresh = function(){
+        var l_id = TweeBee.loading.open(instance.container);
+        
         TweeBee.ajax({
             url: "/api/hobby/master",
             method: "get",
             callback: function(res){
                 instance.master = res;
 
-                instance._renderList("category", instance.master);        
+                instance._renderList("category", instance.master);
+
+                TweeBee.loading.close(l_id, instance.container);
             }
         });
     }

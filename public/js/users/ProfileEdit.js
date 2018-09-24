@@ -11,6 +11,7 @@ var ProfileEdit = function(container, user_id){
     }
 
     instance._refresh = function(){
+        var l_id = TweeBee.loading.open(instance.container.find(".my-hobbies")  );
         TweeBee.ajax({
             url: "/api/user/hobby_get?type=list",
             method: "get",
@@ -51,7 +52,9 @@ var ProfileEdit = function(container, user_id){
                 
                 instance.container.find(".my-hobbies").html(tag);
 
-                instance._attachEventList();     
+                TweeBee.loading.close(l_id, instance.container);
+
+                instance._attachEventList(); 
             }
         });
     }

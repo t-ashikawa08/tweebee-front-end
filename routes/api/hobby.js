@@ -18,4 +18,13 @@ router.post('/register', function(req, res, next) {
     });
 });
 
+router.get('/ranking', function(req, res, next){
+    var json = req.query;
+    
+    commonLib.ajax(config.API + "/hobby/ranking/" + json.type, json, function(error, responce, body){
+        if (commonLib.getError(res, error, responce )) return;
+        res.send(JSON.stringify(body.result));
+    });
+});
+
 module.exports = router;

@@ -1,9 +1,12 @@
-<link href="/css/users/profile.css" rel="stylesheet">
+<link rel="stylesheet" href="/css/users/profile.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/treant-js/1.0/Treant.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/css/swiper.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/treant-js/1.0/Treant.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.1/js/swiper.min.js"></script>
 <script src="/js/users/ProfileHobby.js"></script>
+<script src="/js/users/ProfileRanking.js"></script>
 <div class="profile-wrapper">
     <div class="user-container user-profile-container">
         <div class="user-profile-img">
@@ -25,9 +28,7 @@
             </div>
         </div>
     </div>
-    <div class="user-container hobby-container">
-        
-    </div>
+    <div class="user-container hobby-container"></div>
     <div class="user-container network-container">
         <div class="search-container">
             <p><i class="fa fa-search"></i>TweeBeeユーザを趣味で検索する</p>
@@ -41,56 +42,15 @@
                 <button class="btn btn-primary" type="button">カテゴリを選んで検索</button>
             </div>
         </div>
-        <div class="chart-container">
-            <div class="canvas-wrapper">
-                <canvas id="chart-canvas"></canvas>
-                <script>
-                    var canvas = $("#chart-canvas");
-                    canvas.attr("width", canvas.width());
-                    canvas.attr("height", canvas.height());
-
-                    var myBarChart = new Chart($("#chart-canvas"), {
-                        type: 'bar',
-                        data: {
-                            labels: ["赤", "青", "黄", "緑", "紫"],
-                            datasets: [{
-                                label: '趣味ランキング',
-                                data: [12, 19, 3, 5, 2],
-                                backgroundColor: [
-                                    'rgba(255, 99, 132, 0.2)',
-                                    'rgba(54, 162, 235, 0.2)',
-                                    'rgba(255, 206, 86, 0.2)',
-                                    'rgba(75, 192, 192, 0.2)',
-                                    'rgba(153, 102, 255, 0.2)',
-                                ],
-                                borderColor: [
-                                    'rgba(255,99,132,1)',
-                                    'rgba(54, 162, 235, 1)',
-                                    'rgba(255, 206, 86, 1)',
-                                    'rgba(75, 192, 192, 1)',
-                                    'rgba(153, 102, 255, 1)',
-                                ],
-                                borderWidth: 1
-                            }]
-                        },
-                        options: {
-                            scales: {
-                                yAxes: [{
-                                    ticks: {
-                                        beginAtZero:true
-                                    }
-                                }]
-                            }
-                        }
-                    });
-                </script>
-            </div>
-        </div>
+        <div class="chart-container"></div>
     </div>
 </div>
 <script>
     $(function(){
         var profile_hobby = new ProfileHobby($(".hobby-container"));
         profile_hobby.render();
+
+        var profile_ranking = new ProfileRanking($(".chart-container"));
+        profile_ranking.render();
     })
 </script>

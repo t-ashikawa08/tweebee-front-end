@@ -1,0 +1,44 @@
+.first-view-container,.filter{
+    position: absolute;
+    top: 0;
+    z-index: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+.first-view-container{
+    background-image:url("../img/top.jpg");
+}
+
+.filter {
+    background: rgba(0,0,0,0.5);
+}
+
+.container {
+    margin-top:105px;
+    z-index: 1;
+    position: relative;
+    justify-content: space-around;
+}
+
+.welcome-message{
+    color:white;
+}
+
+.cooperation{
+    padding-top: 2em;
+}
+
+@media screen and (max-width: 768px) {
+    .login-form{
+        max-width: 300px;
+        margin: auto;
+        margin-top: 1em;
+    }
+}
+
+@media screen and (min-width: 769px){
+    .container {
+        display:flex;
+    }    
+}

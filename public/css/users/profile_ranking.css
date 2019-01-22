@@ -1,0 +1,27 @@
+.ranking-wrapper {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.ranking-wrapper .grid {
+    height: 49%;
+    width: 49.5%;
+    display: inline-block;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.description{
+    cursor: default!important;
+}
+
+.description-header, .description-body {
+    background: #909090!important;
+    color: white;
+}
+
+.description-body {
+    text-align: center;
+}    

@@ -1,0 +1,51 @@
+.navigation {
+    height: 60px;
+    box-shadow: -1px 1px 10px rgba(0,0,0,0.4);
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    background: white;
+    z-index:1000;
+}
+
+.logo-wrapper{
+    width: 53px;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+}
+
+#navbarNav{
+    padding-left: 20px;
+}
+
+.navbar {
+    padding-top:0px;
+}
+
+.nav-buttons {
+    display:flex;
+    padding-left: 15px;
+}
+
+.nav-link {
+    margin: auto;
+}
+
+.nav-link img{
+    width: 14px;
+    vertical-align: baseline;
+    margin-right: 5px;
+}
+
+.body-container{
+    margin-top:60px;
+}
+
+@media screen and (max-width: 768px) {
+    
+}
+
+@media screen and (min-width: 769px){
+    
+}

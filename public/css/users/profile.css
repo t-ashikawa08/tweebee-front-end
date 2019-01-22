@@ -1,0 +1,139 @@
+.profile-wrapper {
+    display:flex;
+}
+
+.user-profile-container, .hobby-container, .network-container {
+    height: calc(100vh - 60px);
+}
+
+.user-profile-container{
+    width: calc(100% / 12 * 3);
+    background: #3aabd2;
+}
+
+.hobby-container{
+    width: calc(100% / 12 * 6);
+    background: white;
+}
+
+.network-container{
+    width: calc(100% / 12 * 3);
+}
+
+.user-profile-img{
+    height: calc(100% / 10 * 4);
+    position:relative;
+}
+
+.img-wrapper{
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    border: 5px solid white;
+    overflow:hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.user-profile-text {
+    height: calc(100% / 10 * 6);
+    padding: .5em;
+}
+
+.user-profile-text .names {
+    height: calc(100% / 10 * 2);
+    color: white;
+}
+
+.user-profile-text .others {
+    height: calc(100% / 10 * 8);
+    border-radius: 5px;
+    background: white;
+    overflow: hidden;
+}
+
+.user-profile-text .others .others-inner{
+    padding: 1em;
+    overflow: auto;
+    height: 100%;
+}
+
+.user-profile-text .others .others-inner .fa{
+    color:#3aabd2;
+}
+
+.user-profile-text .id {
+    color:lightgray;
+}
+
+.user-profile-text .name {
+    margin-bottom: 0;
+    font-weight: bold;
+}
+
+.search-container{
+    height: calc(100% / 10 * 3);
+    padding: 1em;
+}
+
+.chart-container {
+    height: calc(100% / 10 * 7);
+    padding: 1em;
+}
+
+.canvas-wrapper, canvas{
+    width:100%;
+    height:100%;
+}
+
+@media screen and (max-width: 768px) {
+    .profile-wrapper {
+        display: block;
+    }
+    .user-container{
+        width: 100%;
+        padding-top: 5%;
+    }
+
+    .sp-footer {
+        display: flex;
+        justify-content: space-around;
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+        color: white;
+        background: #424040;
+        height: 40px;
+    }
+
+    .section-button{
+        font-size: 2em;
+        width: 50px;
+        text-align: center;
+        padding: .2em;
+    }
+
+    .section-button .fa{
+        padding: 0;
+    }
+
+    .profile-wrapper{
+        margin-bottom: 40px;
+    }
+
+    .user-container.active{
+        display: block;
+    }
+
+    .section-button.active{
+        color: #3aabd2;
+    }
+}
+
+@media screen and (min-width: 769px){
+    
+}

@@ -17,7 +17,9 @@ var TweeBee = {
         }).done(function(res){
             basicOption.callback(res);
         }).fail(function(xhr, status, error){
-            alert(status);
+            var port = location.port;
+            var url = location.protocol + "//" + location.hostname + (port ? ":" + port : "") + "/error";
+            location.href = url;
         });
     },
     openModal: function(container, option){

@@ -9,7 +9,7 @@ router.get('/hobby_get', function(req, res, next){
     }
     
     commonLib.ajax(config.API + "/user/hobby_get", json, function(error, responce, body){
-        if (commonLib.getError(res, error, responce )) return;
+        if (commonLib.getError(res, error, body )) return;
         res.send(JSON.stringify(body.result));    
     });
 });
@@ -19,7 +19,7 @@ router.post('/hobby_register', function(req, res, next) {
     json.user_id = req.session.user.id;
 
     commonLib.ajax(config.API + "/user/hobby_register", json, function(error, responce, body){
-        if (commonLib.getError(res, error, responce )) return;
+        if (commonLib.getError(res, error, body )) return;
         res.send(JSON.stringify(body.result));
     });
 });
@@ -29,7 +29,7 @@ router.post('/hobby_delete', function(req, res, next) {
     json.user_id = req.session.user.id;
 
     commonLib.ajax(config.API + "/user/hobby_delete", json, function(error, responce, body){
-        if (commonLib.getError(res, error, responce )) return;
+        if (commonLib.getError(res, error, body )) return;
         res.send(JSON.stringify(body.result));
     });
 });

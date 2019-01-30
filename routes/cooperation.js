@@ -28,7 +28,7 @@ router.get('/callback', passport.authenticate('twitter', {failureRedirect: '/log
     delete req.session.passport;
 
     commonLib.ajax(config.API + "/user/register", { user_id: user.id }, function(error, responce, body){
-        if (commonLib.getError(res, error, responce )) return;
+        if (commonLib.getError(res, error, body )) return;
         res.redirect('/users/profile');
     }); 
 });

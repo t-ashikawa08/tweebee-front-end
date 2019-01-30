@@ -66,6 +66,12 @@ app.set('view engine', 'ejs');
 //public dir routing
 app.use(express.static(path.join(__dirname, 'public')));
 
+//internal server error
+app.use('/error', function(req, res, next){
+  res.status(500);
+  res.render('500');
+});
+
 //not found
 app.use(function(req, res, next){
   res.status(404);

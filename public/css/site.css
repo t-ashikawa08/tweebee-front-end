@@ -174,4 +174,70 @@ a {
     display: none; } }
 @media screen and (min-width: 769px) {
   .hide-pc {
-    display: none; } }
+    display: none; }
+
+  .tb-width-1 {
+    width: calc(100% / 12 * 1); }
+
+  .tb-width-2 {
+    width: calc(100% / 12 * 2); }
+
+  .tb-width-3 {
+    width: calc(100% / 12 * 3); }
+
+  .tb-width-4 {
+    width: calc(100% / 12 * 4); }
+
+  .tb-width-5 {
+    width: calc(100% / 12 * 5); }
+
+  .tb-width-6 {
+    width: calc(100% / 12 * 6); }
+
+  .tb-width-7 {
+    width: calc(100% / 12 * 7); }
+
+  .tb-width-8 {
+    width: calc(100% / 12 * 8); }
+
+  .tb-width-9 {
+    width: calc(100% / 12 * 9); }
+
+  .tb-width-10 {
+    width: calc(100% / 12 * 10); }
+
+  .tb-width-11 {
+    width: calc(100% / 12 * 11); }
+
+  .tb-width-12 {
+    width: calc(100% / 12 * 12); }
+
+  .tb-height-1 {
+    height: calc(100% / 10 * 1); }
+
+  .tb-height-2 {
+    height: calc(100% / 10 * 2); }
+
+  .tb-height-3 {
+    height: calc(100% / 10 * 3); }
+
+  .tb-height-4 {
+    height: calc(100% / 10 * 4); }
+
+  .tb-height-5 {
+    height: calc(100% / 10 * 5); }
+
+  .tb-height-6 {
+    height: calc(100% / 10 * 6); }
+
+  .tb-height-7 {
+    height: calc(100% / 10 * 7); }
+
+  .tb-height-8 {
+    height: calc(100% / 10 * 8); }
+
+  .tb-height-9 {
+    height: calc(100% / 10 * 9); }
+
+  .tb-height-10 {
+    height: calc(100% / 10 * 10); } }

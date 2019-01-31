@@ -60,4 +60,12 @@ a {
     .hide-pc{
         display:none;
     }
+
+    @for $i from 1 through 12 {
+        .tb-width-#{$i} { width: calc(100% / 12 * #{$i}); }
+    }
+
+    @for $i from 1 through 10 {
+        .tb-height-#{$i} { height: calc(100% / 10 * #{$i}); }
+    }
 }

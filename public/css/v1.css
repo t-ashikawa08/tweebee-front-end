@@ -1,0 +1,13 @@
+.network-container,
+.profile-edit-wrapper > .ranking-container {
+  display: none; }
+
+@media screen and (min-width: 769px) {
+  .hobby-container {
+    width: calc(100% / 12 * 8) !important; }
+
+  .user-profile-container {
+    width: calc(100% / 12 * 4) !important; }
+
+  .profile-edit-wrapper > .hobby-edit-container {
+    width: 100%; } }
